@@ -1,0 +1,81 @@
+
+File structure:
+Trunk ------------[+]INC
+                  [+]SRC
+                     Makefile  => "make" to generate KLoggerTest. a simple excutor. "make clean" to clean
+
+                  [+]UT
+                    [+]tests => All Unit tests placed here.
+                       Makefile = > "make" to run tests.  "make clean" to clean.
+                    
+                    VS-Project Files
+
+Build options:
+                  Config.h provide 2 switchers, one is Debug/Release.  another is WINDOWS&LINUX.
+
+
+
+Usage:
+
+include <KLogger.h>
+
+KLogger log;
+log.log();
+
+or 
+KERROR(&log, "xxx %s", "test");
+
+#define KERROR(p, o, ...) (p)->log(KLogger::ERROR, __FILE__, __LINE__, o, __VA_ARGS__)
+
+#define KVERBOSE(p, o, ...) (p)->log(KLogger::VERBOSE, __FILE__, __LINE__, o, __VA_ARGS__)
+
+#define KINFO(p, o, ...) (p)->log(KLogger::INFO, __FILE__, __LINE__, o, __VA_ARGS__)
+
+#define KDEBUG(p, o, ...) (p)->log(KLogger::DEBUG, __FILE__, __LINE__, o, __VA_ARGS__)
+
+
+*********************************************
+                   _ooOoo_
+                  o8888888o
+                  88" . "88
+                  (| -_- |)
+                  O\  =  /O
+               ____/`---'\____
+             .'  \\|     |//  `.
+            /  \\|||  :  |||//  \
+           /  _||||| -:- |||||-  \
+           |   | \\\  -  /// |   |
+           | \_|  ''\---/''  |   |
+           \  .-\__  `-`  ___/-. /
+         ___`. .'  /--.--\  `. . __
+      ."" '<  `.___\_<|>_/___.'  >'"".
+     | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+     \  \ `-.   \_ __\ /__ _/   .-` /  /
+======`-.____`-.___\_____/___.-`____.-'======
+                   `=---='
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+History:
+
+2014/9/19: Write first draft windows implementation version. 
+           Current status: worked already @Windows platform. 
+           
+           TODO: will write Linux version & refactor. UT.
+
+2014/9/22: Finished Linux implementation part.Re-orgnize the file structure.
+           
+           TODO: refactor->UT->Testing->Opertimizing
+
+
+2014/9/25: Finished UT, all features finished.
+           Usage:
+            Config.h provide 2 switchers.  one is Debug/Release,  another is WINDOWS&Linux.
+
+             KLogger root directory: Library is INC&SRC. Main.cpp is just a test, Makefile will link with Main.cpp to a executable.
+             How to use UT.  1. cd UT   2. make will schedule the UT testing.  all tests are placed UT/tests.
+
+           TODO: will do reffactoring & opertimizing after National day if still have time. 
+
+2014/10/16: Last update, Small refactor
+
+2014/11/20: Find a head file was forgotten to upload,  whatever...
